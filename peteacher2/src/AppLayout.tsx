@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Routes, Route, useLocation } from "react-router-dom";
+import Monitor from "./pages/Monitor";
 
 const menuItems = [
   { path: "/app/monitor", label: "监控", icon: "📹" },
@@ -68,7 +69,11 @@ export default function AppLayout() {
 
       {/* 右侧内容区 */}
       <div style={{ flex: 1, padding: "40px" }}>
-        <Outlet />
+        <Routes>
+          <Route path="/monitor" element={<Monitor />} />
+          <Route path="/" element={<Monitor />} />   {/* 默认打开监控页面 */}
+          {/* 其他页面以后再加 */}
+        </Routes>
       </div>
     </div>
   );
